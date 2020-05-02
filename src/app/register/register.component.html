@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+   <router-outlet></router-outlet>
+        <div class="container">
+        <form (ngSubmit)="onRegister(f)"  #f="ngForm">
+           <fieldset>
+           
+               <legend>Register</legend>
+            <div class="form-group">
+               <label class="control-label" >Username</label>
+               <input type="text" class="form-control" name="name" ngModel  required > 
+            </div>
+            <div class="form-group">
+               <label class="control-label">Email</label>
+               <input type="email" class="form-control" name="email" ngModel required  email  #email="ngModel"/>
+               <span class="help-block" *ngIf="!email.valid && email.touched">please enter valid email address</span>
+            </div>
+            <div class="form-group">
+               <label class="control-label">Password</label>
+               <input type="password" class="form-control" name="password" ngModel  required  #password="ngModel"/>
+               <span class="help-block" *ngIf=" password.touched &&password.errors?.invalidPassword ">Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                  letter and 1 number</span>
+            </div>
+            <div class="form-group">
+               <label class="control-label">Confirm Password</label>
+               <input type="password" class="form-control" name="conformpassword" ngModel  required/>
+            </div>
+            <div class="form-group">
+               <label class="control-label">Secret Question</label>
+               <select class="form-control" name="secret" ngModel  required  [ngModel]="defaultQuestion">
+                   <option value="teacher">Who is your first teacher</option>
+                   <option value="color"> What is your favourite color</option>
+                   <option value="pet">What is your pet name</option>
+                   <option value="city">which city do you like</option>
+               </select>
+            </div>
+            <div class="form-group">
+               <textarea rows="3"  name="questionanswers" [(ngModel)]="questionAns" class="form-control"></textarea>
+            </div>
+            <p>your reply: {{questionAns}}</p>
+            <button type="submit" class="btn btn-default"  [disabled]="!f.valid" >Register</button>
+           </fieldset>
+        </form>
+        </div>
+       
+</html>

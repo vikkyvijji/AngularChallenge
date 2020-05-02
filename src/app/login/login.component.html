@@ -1,0 +1,21 @@
+
+    <div class="container">
+        <form (ngSubmit)="onLogin(f)"  #f="ngForm">
+            <fieldset>
+                <legend>Login</legend>
+                <div class="form-group">
+                    <label class="control-label" >Username</label>
+                    <input type="text" class="form-control" name="name" ngModel  required > 
+                 </div>
+                 <div class="form-group">
+                    <label class="control-label">Password</label>
+                    <input type="password" class="form-control" name="password" ngModel  required/>
+                 </div>
+                 <button type="submit" class="btn btn-default"  [disabled]="!f.valid">Login</button>
+            </fieldset>
+        </form>
+    </div>     
+    <div>
+        <span>New User Registration</span>
+        <a [routerLink]="['/register']" class="btn btn-primary text-white !important">Register</a>   
+    </div> 
